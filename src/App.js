@@ -64,7 +64,6 @@ export default function DenseTable(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const border = open ? {borderBottom: 0} : {borderBottom: 1};
-  // const background = urlBg ? {backgroundImage: `url(${urlBg})`} : {backgroundColor: `${colorBg}`};
   
   return (
     <>
@@ -84,7 +83,7 @@ export default function DenseTable(props) {
           <TableBody>
             {rows.map((row) => (
               <>
-                <TableRow key={row.id}  className="sac" >
+                <TableRow key={row.id}>
                     <TableCell style={border}>
                       {Checkboxes()}
                     </TableCell>
@@ -104,9 +103,9 @@ export default function DenseTable(props) {
               </TableRow>
               <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }}  colSpan={7}>
-                    <Collapse in={open} timeout="auto" >
+                    <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box margin={1}>
-                            <Table className={classes.table} size="big" aria-label="a table two">
+                            <Table size="big" aria-label="a table two">
                               <FooterTable />
                             </Table>
                         </Box>
@@ -115,7 +114,6 @@ export default function DenseTable(props) {
               </TableRow>
               </>
             ))}
-           
           </TableBody>
         </Table>
       </TableContainer>
