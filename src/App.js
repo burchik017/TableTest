@@ -5,7 +5,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-import FooterTable from './components/downTable';
+import Box from '@material-ui/core/Box';
+import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowDownIcon from '@material-ui/icons/ArrowDownward';
 import KeyboardArrowUpIcon from '@material-ui/icons/ArrowUpward';
@@ -19,6 +20,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Checkbox from '@material-ui/core/Checkbox';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 
  function Checkboxes() {
@@ -78,29 +81,39 @@ export default function DenseTable(props) {
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <TableRow key={row.id}>
-                <TableCell>
-                  {Checkboxes()}
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  {row.id}
-                  <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-                    {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                  </IconButton>
-                </TableCell>
-                <TableCell align="left">{row.type}</TableCell>
-                <TableCell align="left">{row.ip}</TableCell>
-                <TableCell align="left">{row.platform}</TableCell>
-                <TableCell align="left">{row.vers}</TableCell>
-                <TableCell align="left">
-                  <a href="/" >Detail <ArrowForwardIosIcon style={{ fontSize: 12 }} /></a>
-                </TableCell>
+                <TableRow key={row.id}  className="sac">
+                    <TableCell>
+                      {Checkboxes()}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      {row.id}
+                      <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+                        {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                      </IconButton>
+                    </TableCell>
+                    <TableCell align="left">{row.type}</TableCell>
+                    <TableCell align="left">{row.ip}</TableCell>
+                    <TableCell align="left">{row.platform}</TableCell>
+                    <TableCell align="left">{row.vers}</TableCell>
+                    <TableCell align="left">
+                      <a href="/" >Detail <ArrowForwardIosIcon style={{ fontSize: 12 }} /></a>
+                    </TableCell>
+                    <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+                        <Collapse in={open} timeout="auto" unmountOnExit>
+                            <Box margin={1}>
+                                <Table size="small" aria-label="purchases">
+                                  dasdasda
+                                </Table>
+                            </Box>
+                        </Collapse>
+                    </TableCell>
+                {/* <FooterTable /> */}
               </TableRow>
             ))}
+           
           </TableBody>
         </Table>
       </TableContainer>
-      <FooterTable />
     </>
   );
 }
