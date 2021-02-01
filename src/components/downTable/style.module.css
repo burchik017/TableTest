@@ -1,10 +1,5 @@
 .cont {
     display: flex;
-    /* height: 0;
-    overflow: hidden; */
-}
-.cont.active {
-    height: 200px;
     overflow: hidden;
 }
 .cont .left {
@@ -35,10 +30,14 @@
     width: 180px;
     justify-content: space-between;
 }
+.cont .right tbody:nth-child(even) {
+    background: #9b979721;
+}
 .cont .right tbody tr td:nth-child(4) {
     color: #005f00;
     font-weight: bold;
 }
+
 .cont .right tbody tr td:nth-child(5) span {
     padding: 4px;
     border: 1px solid #ff0000;

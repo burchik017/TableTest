@@ -3,6 +3,7 @@ import './App.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import FooterTable from './components/downTable';
 
 
 import Box from '@material-ui/core/Box';
@@ -62,8 +63,9 @@ const rows = [
 export default function DenseTable(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-
-
+  const border = open ? {borderBottom: 0} : {borderBottom: 1};
+  // const background = urlBg ? {backgroundImage: `url(${urlBg})`} : {backgroundColor: `${colorBg}`};
+  
   return (
     <>
       <TableContainer >
@@ -81,34 +83,37 @@ export default function DenseTable(props) {
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-                <TableRow key={row.id}  className="sac">
-                    <TableCell>
+              <>
+                <TableRow key={row.id}  className="sac" >
+                    <TableCell style={border}>
                       {Checkboxes()}
                     </TableCell>
-                    <TableCell component="th" scope="row">
+                    <TableCell component="th" scope="row" style={border}>
                       {row.id}
                       <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
                         {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                       </IconButton>
                     </TableCell>
-                    <TableCell align="left">{row.type}</TableCell>
-                    <TableCell align="left">{row.ip}</TableCell>
-                    <TableCell align="left">{row.platform}</TableCell>
-                    <TableCell align="left">{row.vers}</TableCell>
-                    <TableCell align="left">
+                    <TableCell style={border} align="left">{row.type}</TableCell>
+                    <TableCell style={border} align="left">{row.ip}</TableCell>
+                    <TableCell style={border} align="left">{row.platform}</TableCell>
+                    <TableCell style={border} align="left">{row.vers}</TableCell>
+                    <TableCell style={border} align="left">
                       <a href="/" >Detail <ArrowForwardIosIcon style={{ fontSize: 12 }} /></a>
                     </TableCell>
-                    <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-                        <Collapse in={open} timeout="auto" unmountOnExit>
-                            <Box margin={1}>
-                                <Table size="small" aria-label="purchases">
-                                  dasdasda
-                                </Table>
-                            </Box>
-                        </Collapse>
-                    </TableCell>
-                {/* <FooterTable /> */}
               </TableRow>
+              <TableRow>
+                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }}  colSpan={7}>
+                    <Collapse in={open} timeout="auto" >
+                        <Box margin={1}>
+                            <Table className={classes.table} size="big" aria-label="a table two">
+                              <FooterTable />
+                            </Table>
+                        </Box>
+                    </Collapse>
+                </TableCell>
+              </TableRow>
+              </>
             ))}
            
           </TableBody>
