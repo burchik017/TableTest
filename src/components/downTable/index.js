@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-const FooterTable = (memory, disk, cpu, ObjectForTableDown) => {
+const FooterTable = () => {
     return (
         <div className={f.cont}>
             <div className={f.left}>
